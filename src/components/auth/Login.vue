@@ -1,6 +1,6 @@
 <template>
   <div class="login container">
-    <form class="card-panel" @submit="login">
+    <form class="card-panel" @submit.prevent="login">
       <h2 class="center deep-purple-text">Login</h2>
       <div class="field">
         <label for="email">Email</label>

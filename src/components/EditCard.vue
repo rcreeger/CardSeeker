@@ -74,14 +74,14 @@ export default {
     }
   },
   created() {
-    let ref = db
-      .collection("cards")
-      .where("slug", "==", this.$route.params.smoothie_slug);
-    ref.get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.smoothie = doc.data();
-        this.smoothie.id = doc.id;
-      });
+    let ref = db.collection("cards").doc(this.$route.params.card_id);
+    ref.get().then(doc => {
+      // console.log("edit card snapshot", snapshot);
+      // snapshot.forEach(doc => {
+      this.card = doc.data();
+      this.price = this.card.price;
+      this.name = this.card.name;
+      // });
     });
   }
 };

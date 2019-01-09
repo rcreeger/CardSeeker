@@ -20,37 +20,51 @@
 
 <script>
 import db from "@/firebase/init";
-import slugify from "slugify";
+// import slugify from "slugify";
+import firebase from "firebase";
 export default {
   name: "Signup",
   data() {
     return {
       email: null,
       password: null,
-      feedback: null,
-      slug: null
+      feedback: null
+      // slug: null
     };
   },
   methods: {
     signup() {
-      if (this.email) {
-        this.slug = slugify(this.email, {
-          replacement: "-",
-          remove: /[$*_+~.()'"!\-:@]/g,
-          lower: true
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(res => {
+          console.log("signup success res", res);
+          this.$router.push({ name: "Login" });
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          this.feedback = errorMessage;
         });
-        console.log(this.slug);
-        let ref = db.collection("users").doc(this.slug);
-        ref.get().then(doc => {
-          if (doc.exists) {
-            this.feedback = "This username already exists";
-          } else {
-            this.feedback = "This username is free to use";
-          }
-        });
-      } else {
-        this.feedback = "Please enter a username";
-      }
+      // if (this.email) {
+      //   this.slug = slugify(this.email, {
+      //     replacement: "-",
+      //     remove: /[$*_+~.()'"!\-:@]/g,
+      //     lower: true
+      //   });
+      //   console.log(this.slug);
+      //   let ref = db.collection("users").doc(this.slug);
+      //   ref.get().then(doc => {
+      //     if (doc.exists) {
+      //       this.feedback = "This username already exists";
+      //     } else {
+      //       this.feedback = "This username is free to use";
+      //     }
+      //   });
+      // } else {
+      //   this.feedback = "Please enter a username";
+      // }
     }
   }
 };

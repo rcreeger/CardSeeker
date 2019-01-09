@@ -40,18 +40,18 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path == "/") {
-    // If we are entering the homepage.
-    const currentUser = firebase.auth().currentUser;
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
-    if (requiresAuth && !currentUser) next("/");
-    else if (!requiresAuth && currentUser) next("/");
-    else next();
-  } else {
-    // Not entering the homepage. Proceed as normal.
-    next();
-  }
+  // if (to.path == "/") {
+  //   // If we are entering the homepage.
+  //   const currentUser = firebase.auth().currentUser;
+  //   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  //
+  //   if (requiresAuth && !currentUser) next("/");
+  //   else if (!requiresAuth && currentUser) next("/");
+  //   else next();
+  // } else {
+  // Not entering the homepage. Proceed as normal.
+  next();
+  // }
 });
 
 export default router;

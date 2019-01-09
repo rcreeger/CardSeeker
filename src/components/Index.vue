@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 import db from "@/firebase/init";
 export default {
   name: "Index",
@@ -43,6 +44,7 @@ export default {
     }
   },
   created() {
+    console.log("currentUser in index", firebase.auth().currentUser.uid);
     db.collection("cards")
       .get()
       .then(snapshot => {
