@@ -33,12 +33,13 @@ export default {
     login() {
       if (this.email && this.password) {
         this.feedback = null;
+        let email = this.email;
+        let password = this.password;
         firebase
           .auth()
-          .signInWithEmailAndPassword(this.email, this.password)
-          .then(user => {
-            //console.log(user)
-            this.$router.push({ name: "CardTracker" });
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            this.$router.push({ name: "Index" });
           })
           .catch(err => {
             this.feedback = err.message;

@@ -12,6 +12,13 @@
             </router-link>
           </li>
         </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <router-link :to="{ name: 'Signup' }">
+              <span class="nav-title">Sign Up </span>
+            </router-link>
+          </li>
+        </ul>
 
         <a href="" class="btn-floating btn-large halfway-fab pink">
           <router-link :to="{ name: 'AddCard' }">

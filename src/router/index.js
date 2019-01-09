@@ -5,6 +5,7 @@ import AddCard from "@/components/AddCard";
 import EditCard from "@/components/EditCard";
 import Signup from "@/components/auth/Signup";
 import Login from "@/components/auth/Login";
+import firebase from "firebase";
 
 Vue.use(Router);
 
@@ -44,8 +45,8 @@ router.beforeEach((to, from, next) => {
     const currentUser = firebase.auth().currentUser;
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-    if (requiresAuth && !currentUser) next("Index");
-    else if (!requiresAuth && currentUser) next("Index");
+    if (requiresAuth && !currentUser) next("/");
+    else if (!requiresAuth && currentUser) next("/");
     else next();
   } else {
     // Not entering the homepage. Proceed as normal.

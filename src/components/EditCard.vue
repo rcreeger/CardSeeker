@@ -46,7 +46,6 @@ export default {
           .doc(this.card.id)
           .update({
             name: this.card.name,
-            slug: this.slug,
             price: this.card.price
           })
           .then(() => {
