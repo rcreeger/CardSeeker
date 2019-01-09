@@ -5,6 +5,11 @@
         <router-link :to="{ name: 'Index' }">
           <span class="nav-title">Card Seeker </span>
         </router-link>
+        <a href="" class="btn-floating btn-large halfway-fab pink add">
+          <router-link :to="{ name: 'AddCard' }">
+            <i class="material-icons">add</i>
+          </router-link>
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
             <router-link :to="{ name: 'Login' }">
@@ -19,12 +24,6 @@
             </router-link>
           </li>
         </ul>
-
-        <a href="" class="btn-floating btn-large halfway-fab pink center">
-          <router-link :to="{ name: 'AddCard' }">
-            <i class="material-icons">add</i>
-          </router-link>
-        </a>
       </div>
     </nav>
   </div>
@@ -42,5 +41,9 @@ export default {
 <style>
 .navbar nav {
   padding: 0 20px;
+}
+
+.add {
+  right: 50% !important;
 }
 </style>
