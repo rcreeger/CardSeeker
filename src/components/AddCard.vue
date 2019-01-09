@@ -3,8 +3,8 @@
     <h2 class="center-align indigo-text">Add New Card</h2>
     <form @submit.prevent="addCard">
       <div class="field title">
-        <label for="title">Card:</label>
-        <input type="text" name="title" v-model="name" />
+        <label for="name">Card:</label>
+        <input type="text" name="name" v-model="name" />
       </div>
       <div class="field price">
         <label for="price">Price:</label>
@@ -17,6 +17,14 @@
       <div class="field grade">
         <label for="price">Grade:</label>
         <input type="text" name="grade" v-model="grade" />
+      </div>
+      <div class="field year">
+        <label for="year">Year:</label>
+        <input type="text" name="year" v-model="year" />
+      </div>
+      <div class="field image">
+        <label for="image">Image:</label>
+        <input type="text" name="image" v-model="image" />
       </div>
 
       <div class="field center-align">

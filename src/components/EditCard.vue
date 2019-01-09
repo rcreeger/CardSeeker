@@ -27,6 +27,8 @@ export default {
     return {
       card: null,
       price: null,
+      team: null,
+      grade: null,
       feedback: null,
       slug: null
     };
@@ -34,19 +36,24 @@ export default {
   methods: {
     editCard() {
       if (this.card.name) {
-        this.feedback = null;
+        // this.feedback = null;
         // create a slug
-        this.slug = slugify(this.card.name, {
+        this.slug = slugify(this.name, {
           replacement: "-",
           remove: /[$*_+~.()'"!\-:@]/g,
           lower: true
         });
-
+        console.log(
+          db.collection("cards"),
+          this.name,
+          this.price,
+          this.$route.params.card_id
+        );
         db.collection("cards")
-          .doc(this.card.id)
+          .doc(this.$route.params.card_id)
           .update({
-            name: this.card.name,
-            price: this.card.price
+            card: this.name,
+            price: this.price
           })
           .then(() => {
             this.$router.push({ name: "Index" });
