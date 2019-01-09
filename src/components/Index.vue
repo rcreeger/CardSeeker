@@ -9,10 +9,12 @@
           <h2 class="indigo-text card-title activator">{{ card.name }}</h2>
         </div>
         <div class="card-reveal">
-          <span><i class="material-icons right">close</i></span>
-          <span class="chip">{{ card.grade }}</span>
-          <span class="chip">{{ card.team }}</span>
-          <span class="chip">{{ card.price }}</span>
+          <span class="card-title"
+            ><i class="material-icons right">close</i></span
+          >
+          <p><b>GRADE: </b>{{ card.grade }}</p>
+          <p><b>TEAM: </b>{{ card.team }}</p>
+          <p><b>PRICE: </b>${{ card.price }}</p>
         </div>
         <a class="btn-floating halfway-fab waves-effect waves-light blue left"
           ><i class="material-icons" @click="deleteCard(card.id)">delete</i></a

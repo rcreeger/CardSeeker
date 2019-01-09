@@ -20,7 +20,7 @@
           </li>
         </ul>
 
-        <a href="" class="btn-floating btn-large halfway-fab pink">
+        <a href="" class="btn-floating btn-large halfway-fab pink center">
           <router-link :to="{ name: 'AddCard' }">
             <i class="material-icons">add</i>
           </router-link>
