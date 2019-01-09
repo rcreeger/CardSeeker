@@ -1,18 +1,28 @@
 <template>
   <div class="index container">
-    <div class="card" v-for="card in cards" :key="card.id">
-      <div class="card-content">
-        <i class="material-icons delete" @click="deleteCard(card.id)">delete</i>
-        <h2 class="indigo-text">{{ card.name }}</h2>
-        <img :src="card.image" /> <span class="chip">{{ card.price }}</span>
-        <span class="chip">{{ card.grade }}</span>
-        <span class="chip">{{ card.team }}</span>
+    <div v-for="card in cards" :key="card.id">
+      <div class="card">
+        <div class="card-image">
+          <img class="activator" :src="card.image" />
+        </div>
+        <div class="card-content">
+          <h2 class="indigo-text card-title activator">{{ card.name }}</h2>
+        </div>
+        <div class="card-reveal">
+          <span><i class="material-icons right">close</i></span>
+          <span class="chip">{{ card.grade }}</span>
+          <span class="chip">{{ card.team }}</span>
+          <span class="chip">{{ card.price }}</span>
+        </div>
+        <a class="btn-floating halfway-fab waves-effect waves-light blue left"
+          ><i class="material-icons" @click="deleteCard(card.id)">delete</i></a
+        >
+        <span class="btn-floating btn-large halfway-fab pink">
+          <router-link :to="{ name: 'EditCard', params: { card_id: card.id } }">
+            <i class="material-icons edit">edit</i>
+          </router-link>
+        </span>
       </div>
-      <span class="btn-floating btn-large halfway-fab pink">
-        <router-link :to="{ name: 'EditCard', params: { card_id: card.id } }">
-          <i class="material-icons edit">edit</i>
-        </router-link>
-      </span>
     </div>
   </div>
 </template>
